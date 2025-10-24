@@ -1,0 +1,78 @@
+# EX3(C) - C Control Structures Syntax Checker
+========================================================================
+
+# Requirements
+- Flex and Bison/Yacc installed (Linux/Mac) or Windows with Cygwin/WSL  
+- GCC installed  
+- Terminal/Command Prompt  
+- `control.l` and `control.y` files in the same directory  
+- Optional: Sample input text files (`for.txt`, `while.txt`, `if.txt`, `if_else.txt`, `if_elseif.txt`, `nested.txt`, `switch.txt`)  
+
+---
+
+# Part 1: Compile
+yacc -d control.y
+lex control.l
+gcc y.tab.c lex.yy.c -lfl -o control
+
+---
+
+# Part 2: Run
+./control < input_file.txt
+
+Replace `input_file.txt` with any of the sample input files or your own C control statement file.
+
+---
+
+# Sample Terminal Execution
+
+$ yacc -d control.y
+$ lex control.l
+$ gcc y.tab.c lex.yy.c -lfl -o control
+$ ./control < for.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+$ ./control < while.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+$ ./control < if.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+$ ./control < if_else.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+$ ./control < if_elseif.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+$ ./control < nested.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+$ ./control < switch.txt
+
+Enter C control statements to check syntax:
+Parsing complete!
+
+---
+
+# Notes
+- Run `yacc -d control.y` first to generate `y.tab.c` and `y.tab.h`  
+- Then run `lex control.l` to generate `lex.yy.c`  
+- Compile both with GCC using `-lfl` to link the Flex library  
+- The program checks syntax for C control structures: for, while, if, if-else, if-else-if, and switch-case  
+- Syntax errors will print `Syntax Error: syntax error` and `Syntax errors found!`  
+- Valid statements will print `Parsing complete!`  
+- Ctrl+C can be used to stop the program if needed  
+- Linux environment is recommended; for Windows, use WSL, Cygwin, or a Linux VM
+
